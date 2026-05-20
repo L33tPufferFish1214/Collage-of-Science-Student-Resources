@@ -1,0 +1,6 @@
+{
+  "name": "College of Science Student Resources",
+  "description": "A searchable, browsable, and human-centered directory of University of Utah College of Science student resources, academic support, and career opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
