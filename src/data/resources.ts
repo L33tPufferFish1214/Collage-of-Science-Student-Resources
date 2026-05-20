@@ -82,7 +82,7 @@ export const RESOURCES_DATA: Resource[] = [
   },
   {
     id: "the-learning-center",
-    name: "The Learning Centre",
+    name: "The Learning Center",
     description: "Note-taking strategies, customized study skills workshops, and personalized general academic coaching to keep you organized.",
     url: "https://learningcenter.utah.edu",
     category: "Academic Help",
@@ -161,16 +161,45 @@ export const RESOURCES_DATA: Resource[] = [
     tier: 1,
     relevanceTags: ["geology", "mining", "metallurgical", "support", "epicenter"]
   },
+  {
+    id: "center-disability-access",
+    name: "Center for Disability & Access (CDA)",
+    description: "Official student disability accommodations office for academic, exam, housing, and campus access support. Apply early because accommodations are not retroactive.",
+    url: "https://disability.utah.edu/",
+    category: "Academic Help",
+    tier: "all",
+    contact: "801-581-5020 / info@disability.utah.edu",
+    relevanceTags: ["cda", "disability accommodations", "ada", "section 504", "exam accommodations"]
+  },
+  {
+    id: "cda-student-portal",
+    name: "CDA Student Portal & Intake",
+    description: "Submit new intake forms, upload documentation, request approved accommodations, and connect with accessibility consultants.",
+    url: "https://cdaportal.utah.edu",
+    category: "Academic Help",
+    tier: "all",
+    relevanceTags: ["cda portal", "intake form", "documentation", "accessibility consultant"]
+  },
 
   // Advising & Course Planning
   {
     id: "academic-advising-hub",
-    name: "Academic Advising Hub",
+    name: "Advising Center",
     description: "Dedicated Science advisors to help with major selection, understanding graduation paths, and mapping courses.",
     url: "https://science.utah.edu/students/academic-advising/",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["advising", "advisors", "major selection", "grad planning"]
+  },
+  {
+    id: "career-coach",
+    name: "Career Coach",
+    description: "University-wide career support for coaching, resume help, job search tools, internships, and career planning.",
+    url: "https://careers.utah.edu/",
+    category: "Advising & Course Planning",
+    tier: "all",
+    contact: "801-587-8687",
+    relevanceTags: ["Career Coach", "career coaching", "resume help", "career planning"]
   },
   {
     id: "schedule-advising-appointment",
@@ -178,7 +207,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Convenient online scheduler to book a constructive, one-on-one session with your department advisor.",
     url: "https://utah.campus.eab.com",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["schedule appointment", "book advisor", "appointments"]
   },
   {
@@ -586,7 +615,7 @@ export const RESOURCES_DATA: Resource[] = [
     id: "career-closet",
     name: "The Career Closet",
     description: "Access completely free professional attire, shoes, and interview outfits. Look your best for upcoming career events & high-stakes employer fairs.",
-    url: "https://desb-general-scheduling-link.as.me/schedule.php?calendarID=4365520",
+    url: "https://careers.utah.edu/career-closet/",
     category: "Career Development",
     tier: 1,
     relevanceTags: ["free suits", "closet fit", "interview wardrobe", "career prep"]
@@ -609,6 +638,107 @@ export const RESOURCES_DATA: Resource[] = [
     tier: 1,
     relevanceTags: ["internships", "jobs board", "handshake tools"]
   },
+  {
+    id: "u-career-success",
+    name: "U Career Success",
+    description: "University-wide career center serving students across all colleges with coaches, events, job boards, interviews, and career planning.",
+    url: "https://careers.utah.edu/",
+    category: "Career Development",
+    tier: "all",
+    contact: "801-587-8687 / 1731 E Campus Center Dr, STE 1300",
+    relevanceTags: ["u career success", "career center", "career planning", "all majors"]
+  },
+  {
+    id: "u-career-coaches",
+    name: "U Career Success Career Coaches",
+    description: "Meet with a career coach specialized by major or industry for resume help, networking strategy, interviews, and job search planning.",
+    url: "https://careers.utah.edu/career-coach/",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["career coaches", "major coaching", "resume help", "interview prep"]
+  },
+  {
+    id: "internships-plus",
+    name: "Internships+",
+    description: "University experiential learning hub for internships, applied projects, and career-connected opportunities.",
+    url: "https://careers.utah.edu/experiential-learning/",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["internships", "experiential learning", "career experience"]
+  },
+  {
+    id: "career-events-fairs",
+    name: "Career Events & Fairs Calendar",
+    description: "Browse upcoming career fairs, expos, employer visits, workshops, and networking events across the university.",
+    url: "https://careers.utah.edu/events/",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["career fairs", "events", "employer visits", "networking"]
+  },
+  {
+    id: "handshake-job-board",
+    name: "Handshake Job & Internship Board",
+    description: "University job board for internships, student jobs, full-time roles, employer events, and career resource registration.",
+    url: "https://utah.joinhandshake.com/login",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["handshake", "jobs", "internships", "job board"]
+  },
+  {
+    id: "peer-resume-review",
+    name: "Peer Resume Review",
+    description: "Email your resume to a U Career Success peer coach for feedback before applications, fairs, or interviews.",
+    url: "mailto:peercoachucs@utah.edu",
+    category: "Career Development",
+    tier: "all",
+    contact: "peercoachucs@utah.edu",
+    relevanceTags: ["resume review", "peer coach", "application feedback"]
+  },
+  {
+    id: "ucs-video-interview-studio",
+    name: "U Career Success Video Interview Studio",
+    description: "Book a sound-controlled private room for virtual interviews, employer calls, and professional video meetings.",
+    url: "https://bit.ly/ucs-video-studios",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["video interview", "studio", "private room", "zoom interview"]
+  },
+  {
+    id: "ucs-professional-headshots",
+    name: "U Career Success Professional Headshots",
+    description: "Schedule a free professional photo session for LinkedIn, Handshake, and career profiles.",
+    url: "https://bit.ly/ucs-photos",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["headshots", "linkedin photo", "professional photo"]
+  },
+  {
+    id: "international-student-career-resources",
+    name: "International Student Career Resources",
+    description: "Career guidance tailored to international students, including job search planning, work authorization context, and employer preparation.",
+    url: "https://careers.utah.edu/internationalstudents/",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["international students", "career resources", "work authorization"]
+  },
+  {
+    id: "career-courses",
+    name: "Career Courses",
+    description: "For-credit career development courses that help students build resumes, explore industries, and prepare for internships or jobs.",
+    url: "https://careers.utah.edu/career-courses/",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["career courses", "for credit", "career class"]
+  },
+  {
+    id: "community-champions-internship",
+    name: "Community Champions Internship",
+    description: "Community-focused internship opportunity listed through Handshake for students seeking applied public-impact experience.",
+    url: "https://utah.joinhandshake.com/edu/jobs/10624061",
+    category: "Career Development",
+    tier: "all",
+    relevanceTags: ["community champions", "internship", "public impact"]
+  },
 
   // Student Life & Housing
   {
@@ -621,23 +751,72 @@ export const RESOURCES_DATA: Resource[] = [
     relevanceTags: ["dormitories", "themed communities", "living learning"]
   },
   {
+    id: "transloc-campus-shuttle",
+    name: "TransLoc Campus Shuttle Tracker",
+    description: "Track University of Utah campus shuttles in real time, find nearby stops, and view estimated arrivals through the TransLoc system.",
+    url: "https://uofubus.com",
+    category: "Housing & Campus Life",
+    tier: "all",
+    relevanceTags: ["transloc", "campus shuttle", "bus tracker", "transportation"]
+  },
+  {
+    id: "uride-saferide",
+    name: "URide / SafeRide Night Rides",
+    description: "Request a free evening and night ride on campus through TransLoc when you do not feel safe walking alone.",
+    url: "https://commuterservices.utah.edu/uride/",
+    category: "Housing & Campus Life",
+    tier: "all",
+    contact: "Research Park after 6 PM: 801-231-9058",
+    relevanceTags: ["uride", "saferide", "night ride", "transloc", "campus safety"]
+  },
+  {
+    id: "feed-u-food-pantry",
+    name: "Feed U Food Pantry",
+    description: "Free non-perishable food and some hygiene items for U students, faculty, and staff. Bring your UCard to the Union pantry.",
+    url: "https://www.union.utah.edu/resources-spaces/feed-u-pantry/about-us/",
+    category: "Housing & Campus Life",
+    tier: "all",
+    contact: "A. Ray Olpin Union Building / @feedupantry",
+    relevanceTags: ["food pantry", "food insecurity", "free food", "ucard", "basic needs"]
+  },
+  {
     id: "safeu-reporting",
     name: "SafeU Reporting Portal",
-    description: "Secure, confidential university channel to safely report physical danger, title IX concerns, racial bias, or harassment.",
+    description: "Campus safety reporting portal for non-emergency concerns like bias incidents, Title IX concerns, unsafe conditions, or safety reports. This is separate from SafeUT crisis chat.",
     url: "https://safeu.utah.edu/",
     category: "Emergency & Safety",
-    tier: 1,
-    relevanceTags: ["confidential reporting", "safeu", "harassment help"]
+    tier: "all",
+    contact: "Dean of Students: 801-581-7066",
+    relevanceTags: ["safeu", "reporting portal", "bias report", "title ix", "non-emergency"]
+  },
+  {
+    id: "office-equal-opportunity-title-ix",
+    name: "Office of Equal Opportunity & Title IX (OEO)",
+    description: "Report discrimination, harassment, sexual misconduct, Title IX concerns, pregnancy-related modifications, and equal opportunity issues.",
+    url: "https://oeo.utah.edu/",
+    category: "Emergency & Safety",
+    tier: "all",
+    contact: "801-581-8365 / oeo@utah.edu",
+    relevanceTags: ["oeo", "title ix", "discrimination", "sexual misconduct", "report incident"]
+  },
+  {
+    id: "oeo-submit-report",
+    name: "Submit an OEO Incident Report",
+    description: "Direct form for submitting discrimination, harassment, sexual misconduct, or Title IX concerns to OEO.",
+    url: "https://utah.tfaforms.net/f/OEO-Incident-Form",
+    category: "Emergency & Safety",
+    tier: "all",
+    relevanceTags: ["oeo report", "incident form", "title ix report", "harassment report"]
   },
 
   // Wellness & Mental Health
   {
     id: "embedded-therapist",
-    name: "Embedded Therapist (Steven Trujillo)",
+    name: "Counseling Center - Embeddied Therapist (Steven Trujillo)",
     description: "Completely private, free mental health counseling located safely and conveniently inside the College of Science. Specifically understands STEM burnout.",
     url: "https://counselingcenter.utah.edu/services/appointment.php",
     category: "Wellness & Mental Health",
-    tier: 1,
+    tier: "all",
     contact: "strujillo@sa.utah.edu / 801-581-6826",
     relevanceTags: ["therapy", "steven trujillo", "mental health", "burnout counselor", "free counseling"]
   },
@@ -647,7 +826,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Provides on-call laboratory safety contacts, hazardous chemical waste management protocols, and primary physical safety tools.",
     url: "https://science.utah.edu/science-safety/",
     category: "Wellness & Mental Health",
-    tier: 1,
+    tier: "all",
     contact: "d.r.thomas@utah.edu / 801-213-0957",
     relevanceTags: ["lab hazard safety", "hazardous chemical", "waste protocol"]
   },
@@ -657,7 +836,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The designated College of Science podcast explaining performance parenting, work-life management, test anxiety, and sleep metrics.",
     url: "https://science.utah.edu/safety/health-wellness-podcast/",
     category: "Wellness & Mental Health",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["wellness podcast", "study anxiety", "burnout tips", "sleep optimization"]
   },
   {
@@ -666,8 +845,91 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The legal, comprehensive record of laboratory precautions, protective standards, and critical safety rules for research settings.",
     url: "https://www.ehs.utah.edu/resource-center/",
     category: "Wellness & Mental Health",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["ehs", "hazard manual", "pre-research rules"]
+  },
+  {
+    id: "ucc-free-mental-health-apps",
+    name: "UCC Free Mental Health Apps",
+    description: "University Counseling Center list of free apps for stress, anxiety, mood tracking, mindfulness, trauma support, and sleep. Apps are tools, not a replacement for professional care.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["free apps", "ucc", "self help", "stress", "sleep"]
+  },
+  {
+    id: "telus-health-student-support",
+    name: "TELUS Health Student Support",
+    description: "Free 24/7 virtual counseling and emotional support for University of Utah students by app, phone, text, or web.",
+    url: "https://counselingcenter.utah.edu/services/myssp.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    contact: "1-833-369-1250",
+    relevanceTags: ["telus health", "virtual counseling", "24/7 support", "my ssp"]
+  },
+  {
+    id: "headspace-app",
+    name: "Headspace",
+    description: "Guided meditation and mindfulness app recommended by the UCC for stress, anxiety, and daily grounding.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["headspace", "meditation", "mindfulness", "anxiety"]
+  },
+  {
+    id: "pranayama-app",
+    name: "Pranayama Breathing",
+    description: "Breathing exercise app recommended by the UCC for anxiety, stress reduction, and nervous system regulation.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["pranayama", "breathing", "stress", "anxiety"]
+  },
+  {
+    id: "ptsd-coach-app",
+    name: "PTSD Coach",
+    description: "Evidence-based self-help tools for managing trauma symptoms, anxiety, and stress responses.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["ptsd coach", "trauma", "anxiety", "stress"]
+  },
+  {
+    id: "how-we-feel-app",
+    name: "How We Feel",
+    description: "Mood tracking and emotional awareness app for daily check-ins, journaling, and noticing patterns over time.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["how we feel", "mood tracking", "journaling", "emotions"]
+  },
+  {
+    id: "mindfulness-bell-app",
+    name: "Mindfulness Bell",
+    description: "Gentle reminder app for mindfulness pauses, breathing breaks, and returning attention during busy days.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["mindfulness bell", "mindfulness", "reminders", "meditation"]
+  },
+  {
+    id: "sleep-sounds-simplynoise",
+    name: "Sleep Sounds / SimplyNoise",
+    description: "Sleep soundscape and white-noise tools recommended by the UCC to support rest, relaxation, and sleep routines.",
+    url: "https://counselingcenter.utah.edu/self-help/free-apps.php",
+    category: "Wellness & Mental Health",
+    tier: "all",
+    relevanceTags: ["sleep sounds", "simplynoise", "white noise", "sleep"]
+  },
+  {
+    id: "safeut-crisis-chat",
+    name: "SafeUT Crisis Chat & Tip App",
+    description: "Free 24/7 crisis counselor chat, call support, and safety tip submission for Utah students. This is separate from SafeU reporting.",
+    url: "https://safeut.org/",
+    category: "Emergency & Safety",
+    tier: "all",
+    contact: "801-587-8852",
+    relevanceTags: ["safeut", "crisis chat", "licensed counselor", "tip line", "mental health crisis"]
   },
   {
     id: "crisis-mental-health",

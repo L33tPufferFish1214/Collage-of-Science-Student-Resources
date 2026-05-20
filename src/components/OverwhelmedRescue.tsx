@@ -18,7 +18,7 @@ export function OverwhelmedRescue({ onSuggestQuery, setActiveView }: Overwhelmed
       badgeColor: "bg-teal-50 text-teal-700 border-teal-100",
       iconColor: "text-teal-600 bg-teal-100/50",
       highlightedResource: {
-        name: "Steven Trujillo — Embedded Therapist",
+        name: "Counseling Center - Embeddied Therapist (Steven Trujillo)",
         contact: "strujillo@sa.utah.edu / 801-581-6826",
         desc: "Completely free, private mental health support tailored specfically for STEM workloads.",
         actionLabel: "Book Confidentially",

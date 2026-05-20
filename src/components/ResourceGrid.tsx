@@ -26,6 +26,9 @@ const CATEGORIES: { label: string; value: string }[] = [
   { label: "Department Hubs", value: "Department Hubs" }
 ];
 
+const normalizeSearchText = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
 export function ResourceGrid({
   resources,
   searchQuery,
@@ -70,13 +73,22 @@ export function ResourceGrid({
 
       // 3. Filter by text search (name, description, tags, category)
       if (searchQuery.trim() !== "") {
-        const query = searchQuery.toLowerCase().trim();
-        const isInName = item.name.toLowerCase().includes(query);
-        const isInDesc = item.description.toLowerCase().includes(query);
-        const isInCat = item.category.toLowerCase().includes(query);
-        const isInTags = item.relevanceTags.some((tag) => tag.toLowerCase().includes(query));
+        const query = normalizeSearchText(searchQuery);
+        const compactQuery = query.replace(/\s+/g, "");
+        const searchableFields = [
+          item.name,
+          item.description,
+          item.category,
+          item.deadline ?? "",
+          item.contact ?? "",
+          ...item.relevanceTags
+        ].map(normalizeSearchText);
+        const isDirectMatch = searchableFields.some((field) => field.includes(query));
+        const isCompactMatch =
+          compactQuery.length > 1 &&
+          searchableFields.some((field) => field.replace(/\s+/g, "").includes(compactQuery));
         
-        if (!isInName && !isInDesc && !isInCat && !isInTags) {
+        if (!isDirectMatch && !isCompactMatch) {
           return false;
         }
       }

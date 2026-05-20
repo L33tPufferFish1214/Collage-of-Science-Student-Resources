@@ -13,17 +13,33 @@ import {
   UserCheck, 
   Users, 
   ArrowRight, 
-  Sparkles 
+  Sparkles,
+  type LucideIcon
 } from "lucide-react";
+
+type QuickCard = {
+  label: string;
+  icon: LucideIcon;
+  category: string;
+  color: string;
+  resourceIds?: string[];
+};
 
 export default function App() {
   const [activeView, setActiveView] = useState<string>("home");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTier, setSelectedTier] = useState<1 | 2 | "all">("all");
+  const [quickResourceIds, setQuickResourceIds] = useState<string[] | null>(null);
+
+  const handleViewChange = (view: string) => {
+    setQuickResourceIds(null);
+    setActiveView(view);
+  };
 
   // Connected navigation query planner
   const handleSuggestQuery = (queryText: string, categoryVal?: string, tierVal?: 1 | 2 | "all") => {
+    setQuickResourceIds(null);
     setSearchQuery(queryText);
     if (categoryVal) setSelectedCategory(categoryVal);
     if (tierVal !== undefined) setSelectedTier(tierVal);
@@ -31,6 +47,7 @@ export default function App() {
   };
 
   const handlePopularSelect = (queryText: string) => {
+    setQuickResourceIds(null);
     setSearchQuery(queryText);
     setSelectedCategory("all");
     setSelectedTier("all");
@@ -39,18 +56,46 @@ export default function App() {
 
   // Fast category click routes from homepage cards
   const handleQuickCategoryClick = (categoryVal: string) => {
+    setQuickResourceIds(null);
     setSelectedCategory(categoryVal);
     setSelectedTier("all");
     setSearchQuery("");
     setActiveView("resources");
   };
 
+  const handleQuickResourceClick = (resourceIds: string[]) => {
+    setQuickResourceIds(resourceIds);
+    setSelectedCategory("all");
+    setSelectedTier("all");
+    setSearchQuery("");
+    setActiveView("resources");
+  };
+
+  const handleDirectorySearchChange = (queryText: string) => {
+    setQuickResourceIds(null);
+    setSearchQuery(queryText);
+  };
+
+  const handleDirectoryCategoryChange = (categoryVal: string) => {
+    setQuickResourceIds(null);
+    setSelectedCategory(categoryVal);
+  };
+
+  const handleDirectoryTierChange = (tierVal: 1 | 2 | "all") => {
+    setQuickResourceIds(null);
+    setSelectedTier(tierVal);
+  };
+
+  const directoryResources = quickResourceIds
+    ? RESOURCES_DATA.filter((resource) => quickResourceIds.includes(resource.id))
+    : RESOURCES_DATA;
+
   // Homepage QUICK ACCESS CARDS definitions
-  const QUICK_CARDS = [
+  const QUICK_CARDS: QuickCard[] = [
     { label: "Academic Support", icon: GraduationCap, category: "Academic Help", color: "text-red-650 bg-red-50 hover:bg-red-100/50" },
     { label: "Scholarships", icon: Award, category: "Scholarships & Financial Aid", color: "text-amber-600 bg-amber-50 hover:bg-amber-100/50" },
     { label: "Research Opportunities", icon: FlaskConical, category: "Research & Internships", color: "text-indigo-600 bg-indigo-50 hover:bg-indigo-100/50" },
-    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning", color: "text-blue-600 bg-blue-50 hover:bg-blue-100/50", externalUrl: "https://science.utah.edu/students/academic-advising/" },
+    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning", color: "text-blue-600 bg-blue-50 hover:bg-blue-100/50", resourceIds: ["academic-advising-hub", "career-coach"] },
     { label: "Wellness & Counseling", icon: Heart, category: "Wellness & Mental Health", color: "text-teal-600 bg-teal-50 hover:bg-teal-100/50" },
     { label: "Student Communities", icon: Users, category: "Community & Student Orgs", color: "text-purple-600 bg-purple-50 hover:bg-purple-100/50" }
   ];
@@ -61,7 +106,7 @@ export default function App() {
       {/* Universal Sticky Header with University of Utah logo */}
       <Header 
         activeView={activeView} 
-        setActiveView={setActiveView}
+        setActiveView={handleViewChange}
       />
 
       {/* Main Container */}
@@ -76,7 +121,7 @@ export default function App() {
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
               onPopularSelect={handlePopularSelect}
-              setActiveView={setActiveView}
+              setActiveView={handleViewChange}
             />
 
             {/* Quick Access Grid Cards */}
@@ -89,8 +134,8 @@ export default function App() {
                     <button
                       key={card.label}
                       onClick={() => {
-                        if (card.externalUrl) {
-                          window.open(card.externalUrl, "_blank", "noopener,noreferrer");
+                        if (card.resourceIds) {
+                          handleQuickResourceClick(card.resourceIds);
                         } else {
                           handleQuickCategoryClick(card.category);
                         }
@@ -114,7 +159,7 @@ export default function App() {
             <section className="py-2" id="emotional-rescue-block-section">
               <OverwhelmedRescue 
                 onSuggestQuery={handleSuggestQuery} 
-                setActiveView={setActiveView}
+                setActiveView={handleViewChange}
               />
             </section>
 
@@ -205,13 +250,13 @@ export default function App() {
 
         {activeView === "resources" && (
           <ResourceGrid 
-            resources={RESOURCES_DATA}
+            resources={directoryResources}
             searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
+            setSearchQuery={handleDirectorySearchChange}
             selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
+            setSelectedCategory={handleDirectoryCategoryChange}
             selectedTier={selectedTier}
-            setSelectedTier={setSelectedTier}
+            setSelectedTier={handleDirectoryTierChange}
           />
         )}
 
@@ -223,7 +268,7 @@ export default function App() {
           <div className="py-6" id="overwhelmed-dedicated-view">
             <OverwhelmedRescue 
               onSuggestQuery={handleSuggestQuery} 
-              setActiveView={setActiveView}
+              setActiveView={handleViewChange}
             />
           </div>
         )}
