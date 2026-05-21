@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { CareerOutlook, CAREER_OUTLOOK_DATA } from "../data/resources";
-import { TrendingUp, DollarSign, FileSpreadsheet, MapPin, Sparkles, Filter, ChevronRight, HelpCircle } from "lucide-react";
+import { TrendingUp, FileSpreadsheet, MapPin, Sparkles } from "lucide-react";
 
 export function CareerOutlookVisualizer() {
   const [selectedSector, setSelectedSector] = useState("all");
@@ -45,12 +45,12 @@ export function CareerOutlookVisualizer() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in" id="careers-panel-wrapper">
       {/* Intro Header */}
       <div className="pb-6 border-b border-gray-150/60" id="careers-intro">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono font-bold mb-3.5">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-utah-red-soft text-utah-red text-xs font-mono font-bold mb-3.5">
+          <Sparkles className="w-3.5 h-3.5 text-utah-red animate-pulse" />
           Bureau of Labor Statistics (BLS) National Projections
         </div>
-        <h2 className="text-xl sm:text-2xl font-extrabold font-sans text-gray-900 tracking-tight flex items-center gap-2">
-          <TrendingUp className="w-6 h-6 text-red-650" />
+        <h2 className="text-xl sm:text-2xl font-extrabold font-sans text-gray-950 tracking-normal flex items-center gap-2">
+          <TrendingUp className="w-6 h-6 text-utah-red" />
           Utah Science Career & Salary Roadmap
         </h2>
         <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed max-w-3xl">
@@ -63,9 +63,9 @@ export function CareerOutlookVisualizer() {
         
         {/* Left Column: Stats Cards & BLS Career Advice */}
         <div className="space-y-6 lg:col-span-1" id="careers-guidelines">
-          <div className="bg-red-50/40 border border-red-100 rounded-2xl p-6 space-y-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
             <h3 className="font-bold text-gray-900 text-sm flex items-center gap-1.5 leading-none">
-              <FileSpreadsheet className="w-4.5 h-4.5 text-red-650" />
+              <FileSpreadsheet className="w-4.5 h-4.5 text-utah-red" />
               How to Leverage Job Statistics
             </h3>
             <p className="text-xs text-gray-650 leading-relaxed">
@@ -73,13 +73,13 @@ export function CareerOutlookVisualizer() {
             </p>
             <div className="pt-2 border-t border-red-100/40 space-y-3.5">
               <div className="flex gap-2">
-                <span className="w-5 h-5 rounded-full bg-red-100 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                <span className="w-5 h-5 rounded-full bg-utah-red-soft text-utah-red text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
                 <p className="text-xs text-gray-650 leading-normal">
                   <strong className="font-bold text-gray-900">High Growth:</strong> Fields with +20% growth rates indicate extremely active hiring markets. Excellent targeting for internship tracks.
                 </p>
               </div>
               <div className="flex gap-2">
-                <span className="w-5 h-5 rounded-full bg-red-100 text-red-700 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                <span className="w-5 h-5 rounded-full bg-utah-red-soft text-utah-red text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
                 <p className="text-xs text-gray-650 leading-normal">
                   <strong className="font-bold text-gray-900">Career Launch Support:</strong> Book appointments with our College of Science peer Career Coaches for interview prep.
                 </p>
@@ -90,7 +90,7 @@ export function CareerOutlookVisualizer() {
               href="https://science.utah.edu/career-paths/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 w-full text-center py-2.5 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md shadow-red-600/15 inline-block transition-all"
+              className="mt-3 w-full text-center py-2.5 px-4 rounded-md bg-utah-red hover:bg-utah-red-dark text-white text-xs font-bold shadow-md shadow-red-600/15 inline-block transition-all"
               id="career-map-link"
             >
               Open Official Career Path Maps
@@ -98,9 +98,9 @@ export function CareerOutlookVisualizer() {
           </div>
 
           {/* Quick-Access Resources Card */}
-          <div className="bg-amber-50/40 border border-amber-100 rounded-2xl p-6 space-y-3">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-3">
             <h4 className="font-bold text-gray-900 text-xs sm:text-sm leading-none flex items-center gap-1.5">
-              <MapPin className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+              <MapPin className="w-4.5 h-4.5 text-utah-red shrink-0" />
               Interview Ready?
             </h4>
             <p className="text-xs text-gray-650 leading-relaxed">
@@ -113,9 +113,9 @@ export function CareerOutlookVisualizer() {
         <div className="lg:col-span-2 space-y-6" id="careers-table-board">
           
           {/* Controls Selector Ribbon */}
-          <div className="bg-white p-5 rounded-2xl border border-gray-150/80 shadow-xs flex flex-col sm:flex-row gap-4 justify-between items-center z-13">
+          <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-xs flex flex-col sm:flex-row gap-4 justify-between items-center z-13">
             {/* Sorting Toggles */}
-            <div className="flex rounded-xl bg-gray-100/80 p-1 w-full sm:w-auto" id="metric-sorting-pills">
+            <div className="flex rounded-lg bg-gray-100/80 p-1 w-full sm:w-auto" id="metric-sorting-pills">
               <button
                 onClick={() => setSortByMetric("growth")}
                 className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -146,7 +146,7 @@ export function CareerOutlookVisualizer() {
               <select
                 value={selectedSector}
                 onChange={(e) => setSelectedSector(e.target.value)}
-                className="w-full text-xs sm:text-sm p-2 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-red-500 transition-colors cursor-pointer text-gray-700 font-semibold"
+                className="w-full text-xs sm:text-sm p-2 bg-gray-50 border border-gray-200 rounded-md outline-none focus:border-utah-red transition-colors cursor-pointer text-gray-700 font-semibold"
                 id="sector-filter-select"
               >
                 <option value="all">All Sectors</option>
@@ -169,7 +169,7 @@ export function CareerOutlookVisualizer() {
               return (
                 <div 
                   key={`${c.career}-${index}`}
-                  className="bg-white rounded-2xl border border-gray-150/85 hover:border-gray-200/95 p-5 shadow-xs hover:shadow-md transition-all duration-300"
+                  className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 p-5 shadow-xs hover:shadow-md transition-all duration-300"
                   id={`career-item-${index}`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-50">
@@ -194,7 +194,7 @@ export function CareerOutlookVisualizer() {
                       {/* Metric 2: Growth */}
                       <div>
                         <span className="text-[10px] text-gray-400 font-mono uppercase block">10-Yr Outlook</span>
-                        <span className="text-sm font-extrabold text-emerald-600 font-mono flex items-center justify-start sm:justify-end gap-0.5">
+                        <span className="text-sm font-extrabold text-utah-red font-mono flex items-center justify-start sm:justify-end gap-0.5">
                           +{c.growth}%
                         </span>
                       </div>
@@ -221,11 +221,11 @@ export function CareerOutlookVisualizer() {
                     <div>
                       <div className="flex justify-between text-[10px] text-gray-400 font-mono mb-1">
                         <span>Job Market growth Index</span>
-                        <span className="font-semibold text-emerald-650">+{c.growth}% growth pace</span>
+                        <span className="font-semibold text-utah-red">+{c.growth}% growth pace</span>
                       </div>
                       <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
                         <div 
-                          className="h-full bg-emerald-500 rounded-full transition-all duration-500" 
+                          className="h-full bg-utah-red rounded-full transition-all duration-500" 
                           style={{ width: `${growthPercentage}%` }}
                         />
                       </div>

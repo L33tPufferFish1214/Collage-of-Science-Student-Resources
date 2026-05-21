@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Search, Sparkles, X, ChevronRight, HelpCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Search, X } from "lucide-react";
 import uOfULogo from "../assets/images/regenerated_image_1779306578444.png";
 
 interface SearchSectionProps {
@@ -8,16 +8,6 @@ interface SearchSectionProps {
   onPopularSelect: (category: string) => void;
   setActiveView: (view: string) => void;
 }
-
-const POPULAR_SEARCHES = [
-  { label: "Tutoring Centers", query: "tutoring" },
-  { label: "Scholarship Universe", query: "ScholarshipUniverse" },
-  { label: "Embedded Therapist", query: "Steven Trujillo" },
-  { label: "Beckman Scholars", query: "Beckman" },
-  { label: "Math Placement Help", query: "placement" },
-  { label: "ACCESS Scholars", query: "ACCESS" },
-  { label: "Science Research (SRI)", query: "SRI" }
-];
 
 export function SearchSection({ searchQuery, setSearchQuery, onPopularSelect, setActiveView }: SearchSectionProps) {
   const [isFocused, setIsFocused] = useState(false);
@@ -30,30 +20,24 @@ export function SearchSection({ searchQuery, setSearchQuery, onPopularSelect, se
   };
 
   return (
-    <div className="relative py-12 md:py-20 text-center px-4" id="search-section-wrapper">
-      {/* Visual Ambient Glow Background (Aesthetic Pairings) */}
-      <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-35 overflow-hidden">
-        <div className="w-[500px] h-[300px] bg-red-100 blur-[120px] rounded-full" />
-        <div className="w-[400px] h-[300px] bg-emerald-50 blur-[100px] rounded-full ml-40 mt-10" />
-      </div>
-
+    <div className="relative py-12 md:py-16 text-center px-4 bg-white border-b border-gray-200" id="search-section-wrapper">
       <div className="max-w-3xl mx-auto">
         {/* Centered Brand Lockup matching the official College of Science logo */}
         <div className="flex flex-col items-center justify-center mb-8 select-none animate-fade-in" id="center-brand-lockup">
           <img 
             src={uOfULogo} 
             alt="The University of Utah Logo" 
-            className="w-auto hover:scale-102 transition-transform duration-300 h-[114.9943px] mb-[-29px]"
+            className="w-auto hover:scale-102 transition-transform duration-300 h-[112px] mb-[-28px]"
             referrerPolicy="no-referrer"
           />
-          <div className="w-24 sm:w-28 border-t-2 border-[#cc0000] mt-3.5 mb-2.5" />
-          <span className="text-xl sm:text-2xl font-light tracking-[0.18em] text-gray-800 uppercase font-sans">
+          <div className="w-24 sm:w-28 border-t-2 border-utah-red mt-3.5 mb-2.5" />
+          <span className="text-xl sm:text-2xl font-light text-gray-800 uppercase font-sans tracking-normal">
             College of Science
           </span>
         </div>
 
         {/* Hero Headline */}
-        <h1 className="text-[27px] leading-[33px] font-extrabold text-gray-900 tracking-tight animate-fade-in" id="hero-headline">
+        <h1 className="text-[27px] leading-[33px] font-bold text-gray-950 tracking-normal animate-fade-in" id="hero-headline">
           Find the support, opportunities, and resources you need to succeed.
         </h1>
 
@@ -64,9 +48,9 @@ export function SearchSection({ searchQuery, setSearchQuery, onPopularSelect, se
               e.preventDefault();
               setActiveView("resources");
             }}
-            className={`flex items-center bg-white rounded-2xl shadow-xl border transition-all duration-350 pl-4 pr-2 py-2 ${
+            className={`flex items-center bg-white rounded-lg shadow-lg border transition-all duration-350 pl-4 pr-2 py-2 ${
               isFocused 
-                ? "border-red-500 ring-4 ring-red-100 scale-[1.01]" 
+                ? "border-utah-red ring-4 ring-utah-red-soft scale-[1.01]" 
                 : "border-gray-200/80 hover:border-gray-300"
             }`}
           >
@@ -94,7 +78,7 @@ export function SearchSection({ searchQuery, setSearchQuery, onPopularSelect, se
             )}
             <button
               type="submit"
-              className="px-4.5 py-2 bg-[#cc0000] hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer ml-1.5 shrink-0 uppercase tracking-wider"
+              className="px-4.5 py-2 bg-utah-red hover:bg-utah-red-dark text-white font-bold text-xs sm:text-sm rounded-md transition-all shadow-sm active:scale-95 cursor-pointer ml-1.5 shrink-0 uppercase tracking-normal"
               id="search-submit-button"
             >
               Search

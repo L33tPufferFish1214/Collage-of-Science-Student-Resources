@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import { getCategoryStyle } from "../data/categoryStyles";
 import { Resource } from "../data/resources";
-import { ExternalLink, Calendar, HelpCircle, Share2, Check, Sparkles, Filter, RotateCcw, Search, X } from "lucide-react";
+import { ExternalLink, Calendar, HelpCircle, Share2, Check, Filter, RotateCcw, Search, X } from "lucide-react";
 
 interface ResourceGridProps {
   resources: Resource[];
@@ -116,8 +117,8 @@ export function ResourceGrid({
       {/* Filters Title Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-gray-150/60" id="filter-header">
         <div>
-          <h2 className="text-xl font-bold font-sans text-gray-900 tracking-tight flex items-center gap-2">
-            <Filter className="w-5 h-5 text-gray-400" />
+          <h2 className="text-xl font-bold font-sans text-gray-950 tracking-normal flex items-center gap-2">
+            <Filter className="w-5 h-5 text-utah-red" />
             Explore Resources Directory
           </h2>
           <p className="text-xs text-gray-500 mt-1 leading-normal">
@@ -139,14 +140,14 @@ export function ResourceGrid({
       </div>
 
       {/* Sleek Directory Search Bar */}
-      <div className="mt-6 uppercase font-sans tracking-wider" id="directory-search-outer-container">
+      <div className="mt-6 uppercase font-sans tracking-normal" id="directory-search-outer-container">
         <span className="text-[10px] sm:text-[11px] font-bold text-gray-400 block mb-2 px-1">
           Search terms filter
         </span>
         <div 
-          className={`flex items-center bg-white rounded-2xl shadow-sm border transition-all duration-300 pl-4 pr-2.5 py-2.5 ${
+            className={`flex items-center bg-white rounded-lg shadow-sm border transition-all duration-300 pl-4 pr-2.5 py-2.5 ${
             isSearchFocused 
-              ? "border-red-500 ring-4 ring-red-100 scale-[1.005]" 
+              ? "border-utah-red ring-4 ring-utah-red-soft scale-[1.005]" 
               : "border-gray-200/80 hover:border-gray-300"
           }`}
         >
@@ -177,9 +178,9 @@ export function ResourceGrid({
       {/* FILTER CONTROLS BAR (Double-Tier layout, extremely clear) */}
       <div className="mt-6 flex flex-col gap-5 z-20 shadow-xs" id="filter-interface-controls">
         {/* Academic Journey Stage - PRIMARY FILTER */}
-        <div className="bg-gray-50/60 p-5 rounded-2xl border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-5">
+        <div className="bg-white p-5 rounded-lg border border-gray-200 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="shrink-0">
-            <span className="text-xs font-sans font-bold text-gray-400 uppercase tracking-wider block">
+            <span className="text-xs font-sans font-bold text-gray-400 uppercase tracking-normal block">
               Academic level Grouping
             </span>
             <span className="text-[13px] font-sans font-medium text-gray-700 block mt-0.5">
@@ -190,9 +191,9 @@ export function ResourceGrid({
           <div className="flex flex-wrap items-center gap-2.5" id="journey-tier-toggles">
             <button
               onClick={() => setSelectedTier("all")}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-tight transition-all active:scale-95 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-normal transition-all active:scale-95 cursor-pointer ${
                 selectedTier === "all"
-                  ? "bg-red-600 text-white shadow-md shadow-red-600/15"
+                  ? "bg-utah-red text-white shadow-md shadow-red-600/15"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
               id="tier-toggle-all"
@@ -201,9 +202,9 @@ export function ResourceGrid({
             </button>
             <button
               onClick={() => setSelectedTier(1)}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-tight transition-all active:scale-95 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-normal transition-all active:scale-95 cursor-pointer ${
                 selectedTier === 1
-                  ? "bg-red-600 text-white shadow-md shadow-red-600/15"
+                  ? "bg-utah-red text-white shadow-md shadow-red-600/15"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
               id="tier-toggle-1"
@@ -212,11 +213,20 @@ export function ResourceGrid({
             </button>
             <button
               onClick={() => setSelectedTier(2)}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-tight transition-all active:scale-95 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-normal transition-all active:scale-95 cursor-pointer ${
                 selectedTier === 2
-                  ? "bg-red-600 text-white shadow-md shadow-red-600/15"
+                  ? "text-white shadow-md shadow-[#708E99]/15"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
+              style={
+                selectedTier === 2
+                  ? { backgroundColor: "#708E99", borderColor: "#708E99" }
+                  : {
+                      backgroundColor: "rgba(112, 142, 153, 0.08)",
+                      borderColor: "rgba(112, 142, 153, 0.28)",
+                      color: "#4F6871"
+                    }
+              }
               id="tier-toggle-2"
             >
               Tier 2: Junior, Senior & Graduate
@@ -228,15 +238,33 @@ export function ResourceGrid({
         <div className="flex flex-wrap items-center gap-1.5 py-1" id="category-scroller">
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat.value;
+            const categoryStyle =
+              cat.value === "all"
+                ? {
+                    accent: "#47494A",
+                    background: "#F4F4F3",
+                    border: "#D9DCDE",
+                    text: "#47494A"
+                  }
+                : getCategoryStyle(cat.value);
             return (
               <button
                 key={cat.value}
                 onClick={() => setSelectedCategory(cat.value)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all border shrink-0 ${
+                className="px-3.5 py-2 rounded-md text-xs font-semibold cursor-pointer transition-all border shrink-0 hover:brightness-95"
+                style={
                   isSelected
-                    ? "bg-gray-900 border-gray-900 text-white shadow-xs"
-                    : "bg-white border-gray-200 text-gray-600 hover:text-gray-900 hover:border-gray-300"
-                }`}
+                    ? {
+                        backgroundColor: categoryStyle.accent,
+                        borderColor: categoryStyle.accent,
+                        color: "#ffffff"
+                      }
+                    : {
+                        backgroundColor: categoryStyle.background,
+                        borderColor: categoryStyle.border,
+                        color: categoryStyle.text
+                      }
+                }
                 id={`cat-pill-${cat.value.toLowerCase().replace(/\s/g, "-")}`}
               >
                 {cat.label}
@@ -252,7 +280,7 @@ export function ResourceGrid({
           Showing {filteredResources.length} out of {resources.length} science resources found
         </span>
         {(searchQuery || selectedCategory !== "all" || selectedTier !== "all") && (
-          <span className="text-[11px] font-sans font-bold tracking-wider uppercase bg-red-50 text-red-700 px-2.5 py-1 rounded-md">
+          <span className="text-[11px] font-sans font-bold tracking-normal uppercase bg-utah-red-soft text-utah-red px-2.5 py-1 rounded-md">
             Active Filter Set
           </span>
         )}
@@ -260,17 +288,17 @@ export function ResourceGrid({
 
       {/* MAIN CARDS GRID */}
       {filteredResources.length === 0 ? (
-        <div className="mt-10 p-12 bg-gray-50/50 rounded-2xl border border-gray-150 text-center" id="no-results-panel">
+        <div className="mt-10 p-12 bg-white rounded-lg border border-gray-200 text-center" id="no-results-panel">
           <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-400 mx-auto shadow-xs border border-gray-100">
             <HelpCircle className="w-5 h-5" />
           </div>
-          <h3 className="mt-4 font-bold text-gray-900 text-sm">No matched University Resources</h3>
+          <h3 className="mt-4 font-bold text-gray-950 text-sm">No matched University Resources</h3>
           <p className="mt-1.5 text-xs text-gray-500 max-w-md mx-auto leading-relaxed">
             We couldn't locate any science guides matching <span className="font-semibold text-gray-800">"{searchQuery}"</span> under current level settings. Try resetting your search metrics or exploring categories.
           </p>
           <button 
             onClick={handleResetFilters}
-            className="mt-5 px-5 py-2 bg-gray-950 hover:bg-gray-900 text-white text-xs font-semibold rounded-xl Transition-all cursor-pointer"
+            className="mt-5 px-5 py-2 bg-gray-950 hover:bg-utah-red text-white text-xs font-semibold rounded-md Transition-all cursor-pointer"
             id="empty-state-reset-btn"
           >
             Clear Search & Reset Filters
@@ -279,37 +307,55 @@ export function ResourceGrid({
       ) : (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resources-grid">
           {filteredResources.map((item) => {
-            const isDepartmentHub = item.category === "Department Hubs";
+            const categoryStyle = getCategoryStyle(item.category);
 
             return (
               <div
                 key={item.id}
-                className="rounded-2xl border border-gray-150/80 bg-white hover:border-gray-200 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-xs relative"
+                className="rounded-lg border border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-xs relative"
+                style={{ borderColor: categoryStyle.border }}
                 id={`card-${item.id}`}
               >
                 {/* Visual Accent Tab on hover */}
-                <div className="h-1 w-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity absolute top-0 left-0" />
+                <div
+                  className="h-1 w-full opacity-80 group-hover:opacity-100 transition-opacity absolute top-0 left-0"
+                  style={{ backgroundColor: categoryStyle.accent }}
+                />
 
                 {/* Card Main Body */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Level Badge + category header inline */}
                     <div className="flex items-center justify-between gap-2.5 mb-3.5">
-                      <span className="pl-0 pr-2.5 py-1 rounded-full text-[10px] font-sans font-bold tracking-wider uppercase bg-gray-50 text-gray-500 border border-gray-100">
+                      <span
+                        className="pl-0 pr-2.5 py-1 rounded text-[10px] font-sans font-bold tracking-normal uppercase border"
+                        style={{
+                          backgroundColor: categoryStyle.background,
+                          borderColor: categoryStyle.border,
+                          color: categoryStyle.text
+                        }}
+                      >
                         {item.category}
                       </span>
 
                       {/* Tier Badge */}
                       {item.tier === 1 ? (
-                        <span className="pl-0 pr-2.5 py-1 rounded-full text-[10px] font-bold bg-red-50 text-red-700 font-sans uppercase tracking-wider">
+                        <span className="pl-0 pr-2.5 py-1 rounded text-[10px] font-bold bg-utah-red-soft text-utah-red font-sans uppercase tracking-normal">
                           Freshman / Soph
                         </span>
                       ) : item.tier === 2 ? (
-                        <span className="pl-0 pr-2.5 py-1 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 font-sans uppercase tracking-wider">
+                        <span
+                          className="pl-0 pr-2.5 py-1 rounded text-[10px] font-bold border font-sans uppercase tracking-normal"
+                          style={{
+                            backgroundColor: "rgba(112, 142, 153, 0.14)",
+                            borderColor: "rgba(112, 142, 153, 0.32)",
+                            color: "#4F6871"
+                          }}
+                        >
                           Junior / Senior / Graduate
                         </span>
                       ) : (
-                        <span className="pl-0 pr-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 font-sans uppercase tracking-wider">
+                        <span className="pl-0 pr-2.5 py-1 rounded text-[10px] font-bold bg-gray-50 text-gray-650 border border-gray-100 font-sans uppercase tracking-normal">
                           All Levels
                         </span>
                       )}
@@ -317,14 +363,14 @@ export function ResourceGrid({
 
                     {/* Deadline Reminder if present */}
                     {item.deadline && (
-                      <div className="mb-3 p-2 rounded-lg bg-orange-50/70 border border-orange-100/50 flex items-center gap-1.5 text-[11px] font-medium text-orange-850">
-                        <Calendar className="w-3.5 h-3.5 shrink-0 text-orange-600" />
+                      <div className="mb-3 p-2 rounded-md bg-utah-red-soft border border-red-100 flex items-center gap-1.5 text-[11px] font-medium text-utah-red">
+                        <Calendar className="w-3.5 h-3.5 shrink-0 text-utah-red" />
                         <span>Deadline: <strong className="font-bold">{item.deadline}</strong></span>
                       </div>
                     )}
 
                     {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-snug">
+                    <h3 className="text-base sm:text-lg font-bold text-gray-950 group-hover:text-utah-red transition-colors leading-snug">
                       <a 
                         href={item.url} 
                         target="_blank" 
@@ -344,7 +390,7 @@ export function ResourceGrid({
                     {/* Contact detail if present */}
                     {item.contact && (
                       <div className="mt-3.5 p-2 bg-gray-50 rounded-lg border border-gray-100 text-[11px] text-gray-600 font-sans">
-                        <span className="font-extrabold tracking-wider block uppercase text-[8px] text-gray-400">Office Contact</span>
+                        <span className="font-extrabold tracking-normal block uppercase text-[8px] text-gray-400">Office Contact</span>
                         <span className="truncate block mt-0.5 font-medium">{item.contact}</span>
                       </div>
                     )}
@@ -355,7 +401,7 @@ export function ResourceGrid({
                     {item.relevanceTags.slice(0, 4).map((tag) => (
                       <span 
                         key={tag} 
-                        className="text-[10px] font-serif tracking-tight text-gray-400 bg-gray-50/50 px-1.5 py-0.5 rounded cursor-pointer hover:bg-gray-100/60 hover:text-gray-700"
+                        className="text-[10px] font-sans tracking-normal text-gray-400 bg-gray-50/50 px-1.5 py-0.5 rounded cursor-pointer hover:bg-gray-100/60 hover:text-gray-700"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSearchQuery(tag);
@@ -377,7 +423,7 @@ export function ResourceGrid({
                     id={`share-btn-${item.id}`}
                   >
                     {copiedId === item.id ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <Check className="w-3.5 h-3.5 text-utah-red" />
                     ) : (
                       <Share2 className="w-3.5 h-3.5" />
                     )}
@@ -388,7 +434,7 @@ export function ResourceGrid({
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 py-1.5 px-4 rounded-lg text-xs font-bold bg-gray-900 text-white hover:bg-gray-800 transition-all cursor-pointer"
+                    className="inline-flex items-center gap-1.5 py-1.5 px-4 rounded-md text-xs font-bold bg-gray-950 text-white hover:bg-utah-red transition-all cursor-pointer"
                     id={`visit-btn-${item.id}`}
                   >
                     <span>Visit Site</span>

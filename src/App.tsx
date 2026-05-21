@@ -4,6 +4,7 @@ import { SearchSection } from "./components/SearchSection";
 import { OverwhelmedRescue } from "./components/OverwhelmedRescue";
 import { ResourceGrid } from "./components/ResourceGrid";
 import { CareerOutlookVisualizer } from "./components/CareerOutlook";
+import { getCategoryStyle } from "./data/categoryStyles";
 import { RESOURCES_DATA } from "./data/resources";
 import { 
   GraduationCap, 
@@ -13,7 +14,6 @@ import {
   UserCheck, 
   Users, 
   ArrowRight, 
-  Sparkles,
   type LucideIcon
 } from "lucide-react";
 
@@ -21,7 +21,6 @@ type QuickCard = {
   label: string;
   icon: LucideIcon;
   category: string;
-  color: string;
   resourceIds?: string[];
 };
 
@@ -92,16 +91,16 @@ export default function App() {
 
   // Homepage QUICK ACCESS CARDS definitions
   const QUICK_CARDS: QuickCard[] = [
-    { label: "Academic Support", icon: GraduationCap, category: "Academic Help", color: "text-red-650 bg-red-50 hover:bg-red-100/50" },
-    { label: "Scholarships", icon: Award, category: "Scholarships & Financial Aid", color: "text-amber-600 bg-amber-50 hover:bg-amber-100/50" },
-    { label: "Research Opportunities", icon: FlaskConical, category: "Research & Internships", color: "text-indigo-600 bg-indigo-50 hover:bg-indigo-100/50" },
-    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning", color: "text-blue-600 bg-blue-50 hover:bg-blue-100/50", resourceIds: ["academic-advising-hub", "career-coach"] },
-    { label: "Wellness & Counseling", icon: Heart, category: "Wellness & Mental Health", color: "text-teal-600 bg-teal-50 hover:bg-teal-100/50" },
-    { label: "Student Communities", icon: Users, category: "Community & Student Orgs", color: "text-purple-600 bg-purple-50 hover:bg-purple-100/50" }
+    { label: "Academic Support", icon: GraduationCap, category: "Academic Help" },
+    { label: "Scholarships", icon: Award, category: "Scholarships & Financial Aid" },
+    { label: "Research Opportunities", icon: FlaskConical, category: "Research & Internships" },
+    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning", resourceIds: ["academic-advising-hub", "career-coach"] },
+    { label: "Wellness & Counseling", icon: Heart, category: "Wellness & Mental Health" },
+    { label: "Student Communities", icon: Users, category: "Community & Student Orgs" }
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fbfcfa]" id="app-viewport">
+    <div className="min-h-screen flex flex-col bg-[#f7f7f5]" id="app-viewport">
       
       {/* Universal Sticky Header with University of Utah logo */}
       <Header 
@@ -130,6 +129,7 @@ export default function App() {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="home-quick-grid">
                 {QUICK_CARDS.map((card) => {
                   const IconComponent = card.icon;
+                  const categoryStyle = getCategoryStyle(card.category);
                   return (
                     <button
                       key={card.label}
@@ -140,13 +140,24 @@ export default function App() {
                           handleQuickCategoryClick(card.category);
                         }
                       }}
-                      className="p-5 bg-white border border-gray-150/70 rounded-2xl text-center hover:border-gray-300 hover:shadow-md transition-all group flex flex-col items-center justify-center gap-3.5 cursor-pointer"
+                      className="relative overflow-hidden p-5 bg-white border rounded-lg text-center hover:shadow-md transition-all group flex flex-col items-center justify-center gap-3.5 cursor-pointer"
+                      style={{ borderColor: categoryStyle.border }}
                       id={`home-category-${card.label.toLowerCase().replace(/\s/g, "-")}`}
                     >
-                      <div className={`p-3 rounded-xl transition-colors ${card.color}`}>
+                      <span
+                        className="absolute inset-x-0 top-0 h-1 opacity-85"
+                        style={{ backgroundColor: categoryStyle.accent }}
+                      />
+                      <div
+                        className="p-3 rounded-md transition-colors"
+                        style={{
+                          backgroundColor: categoryStyle.background,
+                          color: categoryStyle.accent
+                        }}
+                      >
                         <IconComponent className="w-5 h-5 shrink-0" />
                       </div>
-                      <span className="text-xs font-bold text-gray-800 tracking-tight block">
+                      <span className="text-xs font-bold text-gray-800 tracking-normal block">
                         {card.label}
                       </span>
                     </button>
@@ -165,21 +176,21 @@ export default function App() {
 
             {/* Featured high value Opportunities Panels */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" id="featured-programs-section">
-              <div className="p-6 sm:p-8 bg-gray-50 border border-gray-200/90 rounded-3xl" id="featured-wrapper">
+              <div className="p-6 sm:p-8 bg-white border border-gray-200 rounded-lg" id="featured-wrapper">
                 <div className="flex items-center mb-6">
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-950 tracking-normal">
                     Featured College of Science Career Accelerators
                   </h3>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="featured-cards-grid">
                   {/* SRI */}
-                  <div className="bg-white border border-gray-150 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-sri">
+                  <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-sri">
                     <div>
-                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-red-50 text-red-700 text-[9px] font-sans font-bold uppercase tracking-wider mb-3">
+                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-utah-red-soft text-utah-red text-[9px] font-sans font-bold uppercase tracking-normal mb-3">
                         Research Day 1
                       </span>
-                      <h4 className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                      <h4 className="font-bold text-gray-950 text-sm sm:text-base leading-snug">
                         Science Research Initiative (SRI)
                       </h4>
                       <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -188,7 +199,7 @@ export default function App() {
                     </div>
                     <button
                       onClick={() => handleSuggestQuery("SRI", "Research & Internships", 1)}
-                      className="mt-4 text-xs font-bold text-red-650 inline-flex items-center gap-1.5 hover:underline text-left self-start"
+                      className="mt-4 text-xs font-bold text-utah-red inline-flex items-center gap-1.5 hover:underline text-left self-start"
                       id="sri-feature-btn"
                     >
                       <span>Explore SRI and SRI-CAP</span>
@@ -197,12 +208,12 @@ export default function App() {
                   </div>
 
                   {/* Beckman */}
-                  <div className="bg-white border border-gray-150 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-beckman">
+                  <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-beckman">
                     <div>
-                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-indigo-50 text-indigo-700 text-[9px] font-sans font-bold uppercase tracking-wider mb-3">
+                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-gray-100 text-gray-800 text-[9px] font-sans font-bold uppercase tracking-normal mb-3">
                         $21,000 Stipend
                       </span>
-                      <h4 className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                      <h4 className="font-bold text-gray-950 text-sm sm:text-base leading-snug">
                         Beckman Scholars Program
                       </h4>
                       <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -211,7 +222,7 @@ export default function App() {
                     </div>
                     <button
                       onClick={() => handleSuggestQuery("beckman", "Scholarships & Financial Aid", 2)}
-                      className="mt-4 text-xs font-bold text-red-650 inline-flex items-center gap-1.5 hover:underline text-left self-start"
+                      className="mt-4 text-xs font-bold text-utah-red inline-flex items-center gap-1.5 hover:underline text-left self-start"
                       id="beckman-feature-btn"
                     >
                       <span>How to apply for Beckman</span>
@@ -220,12 +231,12 @@ export default function App() {
                   </div>
 
                   {/* ACCESS */}
-                  <div className="bg-white border border-gray-150 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-access">
+                  <div className="bg-white border border-gray-200 rounded-lg p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between" id="featured-access">
                     <div>
-                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-teal-50 text-teal-700 text-[9px] font-sans font-bold uppercase tracking-wider mb-3">
+                      <span className="inline-block pl-0 pr-2.5 py-0.5 rounded bg-utah-red-soft text-utah-red text-[9px] font-sans font-bold uppercase tracking-normal mb-3">
                         800+ Alumnae
                       </span>
-                      <h4 className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                      <h4 className="font-bold text-gray-950 text-sm sm:text-base leading-snug">
                         ACCESS Scholars Program
                       </h4>
                       <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -234,7 +245,7 @@ export default function App() {
                     </div>
                     <button
                       onClick={() => handleSuggestQuery("ACCESS", "Scholarships & Financial Aid", 1)}
-                      className="mt-4 text-xs font-bold text-red-650 inline-flex items-center gap-1.5 hover:underline text-left self-start"
+                      className="mt-4 text-xs font-bold text-utah-red inline-flex items-center gap-1.5 hover:underline text-left self-start"
                       id="access-feature-btn"
                     >
                       <span>Learn about ACCESS Scholars</span>
