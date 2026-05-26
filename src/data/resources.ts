@@ -91,7 +91,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Central College of Science hub with top advisor tips, peer tutoring connections, and effective academic support tools.",
     url: "https://science.utah.edu/students/academic_resources/",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["tutoring", "advising", "help", "tips", "resources"]
   },
   {
@@ -100,7 +100,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Note-taking strategies, customized study skills workshops, and personalized general academic coaching to keep you organized.",
     url: "https://learningcenter.utah.edu",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["study skills", "coaching", "learning", "tutoring"]
   },
   {
@@ -109,7 +109,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "One-on-one writing assistance and supportive feedback for term papers, scientific reports, and any creative assignments.",
     url: "https://writingcenter.utah.edu",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["writing", "help", "papers", "reports"]
   },
   {
@@ -127,7 +127,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Compassionate, personalized mentor support to help navigate first-year transition challenges and campus bureaucracy.",
     url: "https://studentsuccess.utah.edu/",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["advocates", "support", "first-gen", "mentorship", "success"]
   },
   {
@@ -136,7 +136,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Dedicated resources and supportive community for first-generation, low-income college students, and students with disabilities.",
     url: "https://trio.utah.edu/",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["first-generation", "low-income", "disability", "trio", "community"]
   },
   {
@@ -145,7 +145,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Focused drop-in peer tutoring specifically for general, organic, and physical chemistry courses.",
     url: "https://chem.utah.edu/undergraduate/resources/index.php",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["chemistry", "tutoring", "organic chemistry", "general chemistry"]
   },
   {
@@ -154,7 +154,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Drop-in tutoring, practice exams, and math study space for all undergraduate mathematics and calculus streams.",
     url: "http://www.math.utah.edu/undergraduate/mathcenter.php",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["math", "calculus", "tutoring", "equations"]
   },
   {
@@ -163,7 +163,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Departmental peer tutoring for introductory physics, mathematical methods, and observational astronomy.",
     url: "https://www.physics.utah.edu/undergraduate-program/tutoring-resources/",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["physics", "astronomy", "tutoring", "gravity"]
   },
   {
@@ -172,7 +172,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Specialized student lounge and focused tutoring support for Geology, Mining, and Metallurgical students.",
     url: "https://www.mines.utah.edu/students/studentepicenter.php",
     category: "Academic Help",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["geology", "mining", "metallurgical", "support", "epicenter"]
   },
   {
@@ -206,16 +206,6 @@ export const RESOURCES_DATA: Resource[] = [
     relevanceTags: ["advising", "advisors", "major selection", "grad planning"]
   },
   {
-    id: "career-coach",
-    name: "Career Coach",
-    description: "University-wide career support for coaching, resume help, job search tools, internships, and career planning.",
-    url: "https://careers.utah.edu/",
-    category: "Career Development",
-    tier: "all",
-    contact: "801-587-8687",
-    relevanceTags: ["Career Coach", "career coaching", "resume help", "career planning"]
-  },
-  {
     id: "schedule-advising-appointment",
     name: "Schedule Advising Appointment",
     description: "Convenient online scheduler to book a constructive, one-on-one session with your department advisor.",
@@ -230,7 +220,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Get quick answers, clear petition signatures, and course add/drop assistance without needing an appointment.",
     url: "https://science.utah.edu/students/drop-in/",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["drop-in", "advising", "quick help", "signature"]
   },
   {
@@ -257,7 +247,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Interactive general education & major course timelines. Get semester-by-semester visual recommendations.",
     url: "https://majormaps.utah.edu/",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["major map", "degree plan", "interactive roadmap"]
   },
   {
@@ -266,7 +256,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Self-tracking spreadsheet guide to easily audit your own general education, diversity, and degree milestones.",
     url: "https://generaleducation.utah.edu/_resources/documents/new-grad-req-worksheet-updated.pdf",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["graduation worksheet", "audit requirements", "gen-ed tracking"]
   },
   {
@@ -302,7 +292,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The complete textbook legal record of all course profiles, credit breakdowns, and university academic code policies.",
     url: "https://science.utah.edu/academic-catalogs/",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["catalogs", "policies", "rules", "credits"]
   },
   {
@@ -311,7 +301,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Formally request transfer, AP, or alternative courses to satisfy specific general education core requirements.",
     url: "https://requirements.utah.edu/advising-resources/secure/petition-form.php",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["petition", "transfer match", "gen-ed waiver"]
   },
   {
@@ -320,7 +310,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Clear process guidance and forms to request extenuating exception withdrawals or section changes after standard deadlines.",
     url: "https://science.utah.edu/students/late-withdrawls/",
     category: "Advising & Course Planning",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["late drop", "extenuating withdrawal", "petition exception"]
   },
 
@@ -331,7 +321,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The ultimate single application software. Fill it out once to be instantly matched with ALL eligible university & College of Science scholarships.",
     url: "https://utah.scholarshipuniverse.com/student/application/25730/847257",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15 annually",
     relevanceTags: ["scholarships", "centralized portal", "financial aid", "universe"]
   },
@@ -341,7 +331,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The essential annually updated federal application ensuring access to student loans, interest-subsidized work studies, and Pell Grants.",
     url: "https://financialaid.utah.edu/types-of-aid/fafsa.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "ASAP each fall",
     relevanceTags: ["fafsa", "loans", "pell grant", "government funding"]
   },
@@ -351,7 +341,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Speak with a compassionate representative one-on-one to evaluate emergency grants, payment timelines, or financial hurdles.",
     url: "https://financialaid.utah.edu/contact-us.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["counselor", "financial help", "tuition timeline", "emergency fund"]
   },
   {
@@ -370,7 +360,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Departmental endowments matching undergraduate weather-science majors with supportive financial aid.",
     url: "https://atmos.utah.edu/undergraduate/academics/scholarships.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["atmospheric sciences", "weather", "meteorology funding"]
   },
@@ -380,7 +370,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Dedicated science tuition assistance and competitive awards strictly for declared biology undergraduates.",
     url: "https://www.biology.utah.edu/scholarships-financial-aid/",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["biology", "pre-med funding", "tuition aid"]
   },
@@ -390,7 +380,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Generous tuition financial assistance and award stipends curated for high-performing chemistry majors.",
     url: "https://www.chemistry.utah.edu/awards-and-scholarships/",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["chemistry", "chemical awards", "stipend help"]
   },
@@ -400,7 +390,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Various department merit scholarships and hardship-assistance funding sources tailored for mathematics majors.",
     url: "http://www.math.utah.edu/undergraduate/scholarships.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["math", "equations funding", "actuary assistance"]
   },
@@ -410,7 +400,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Undergraduate fellowships and resource funding specifically for geosciences researchers, field campers, and earth science enthusiasts.",
     url: "https://earth.utah.edu/financial_aid.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["geology", "earth science", "field work aid"]
   },
@@ -420,7 +410,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Dedicated endowment support structures assisting physics, astronomy, and biophysics undergraduate programs.",
     url: "https://www.physics.utah.edu/undergraduate-program/scholarships/",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["physics", "astronomy funding", "space research aid"]
   },
@@ -430,7 +420,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Industry-backed, massive coverage scholarships ensuring high financial support packages for mining students.",
     url: "https://mining.utah.edu/scholarships/index.php",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["mining engineering", "resource development", "funding"]
   },
@@ -440,7 +430,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Generous materials science and engineering tuition assistance scholarships for MSE majors.",
     url: "https://mse.utah.edu/materials-science-engineering-scholarships/",
     category: "Scholarships & Financial Aid",
-    tier: 1,
+    tier: "all",
     deadline: "Feb 15",
     relevanceTags: ["metallurgical", "materials science", "engineering funding"]
   },
@@ -471,7 +461,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Receive direct paid funding or semester stipends to execute creative original research with a dedicated faculty advisor.",
     url: "https://our.utah.edu/urop/",
     category: "Research & Internships",
-    tier: 1,
+    tier: "all",
     deadline: "Varies by semester",
     relevanceTags: ["urop", "paid research", "stipends", "mentored study"]
   },
@@ -481,7 +471,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "An intensive, immersive paid summer research experience connecting undergrads with faculty mentors, housing, and research lectures.",
     url: "https://our.utah.edu/spur/",
     category: "Research & Internships",
-    tier: 1,
+    tier: "all",
     deadline: "Spring deadline",
     relevanceTags: ["spur", "summer intensive", "paid stipend", "housing"]
   },
@@ -491,7 +481,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Build confidence and earn credit. Present your emerging research findings via posters to the campus community in a supportive environment.",
     url: "https://our.utah.edu/education-events/urs/",
     category: "Research & Internships",
-    tier: 1,
+    tier: "all",
     deadline: "Spring semester",
     relevanceTags: ["symposium", "poster presentation", "academic credential"]
   },
@@ -503,7 +493,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "American Indian Science & Engineering Society chapter fostering support, culture, and professional networks for indigenous STEM students.",
     url: "https://www.aises.org/directory/university-utah",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["aises", "indigenous", "native american", "cultural support"]
   },
   {
@@ -512,7 +502,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Fun, friendly campus chapter host to chemistry socials, laboratory tours, community science demonstrations, and peer study groups.",
     url: "https://linktr.ee/ACSUofU",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["chemistry", "acs", "social events", "outreach"]
   },
   {
@@ -521,7 +511,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Inspiring community of women and underrepresented mathematicians providing career mentoring, panel advice, and math tea sessions.",
     url: "https://www.math.utah.edu/awmchapter/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["awm", "women in math", "tea socials", "mentoring"]
   },
   {
@@ -530,7 +520,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Open community celebrating diverse STEM identities. Promotes environmental advocacy, research opportunities, and wellness.",
     url: "https://www.curieclub.org/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["curie club", "all science", "advocacy", "entrepreneurship"]
   },
   {
@@ -539,7 +529,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The premier local chapter of the national network. Promotes Chicanos/Hispanics, Native Americans, and minority STEM leaders in advanced research.",
     url: "https://uofuhealth.utah.edu/sacnas/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["sacnas", "hispanic", "chicano", "minority advancement", "leaders"]
   },
   {
@@ -548,7 +538,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Out in Science, Technology, Engineering, and Mathematics. Dedicated to providing LGBTQ+ students with community, safety, and corporate recruiters.",
     url: "https://www.facebook.com/oSTEMUtah/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["ostem", "lgbtq+", "queer stem", "corporate diversity"]
   },
   {
@@ -557,7 +547,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Energetic and welcoming club for astrophysics, gravity, and general quantum enthusiasts. No department major required.",
     url: "https://spsutah.wordpress.com/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["physics", "sps", "space science", "peer community"]
   },
   {
@@ -566,7 +556,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Active collective providing a powerful sisterhood, helpful career panels, and safe peer support for women studying physical theories.",
     url: "https://www.facebook.com/undergradwompa/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["uwompa", "women in physics", "astronomy support", "women"]
   },
   {
@@ -575,7 +565,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "A motivating network guiding Latino/a pre-med undergraduates smoothly through science coursework toward medical school acceptances.",
     url: "https://www.facebook.com/LMSAUtah",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["lmsa", "latino medicine", "pre-med networking"]
   },
   {
@@ -584,7 +574,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The Undergraduate Student Advisory Committee. Enables physics students to voice recommendations regarding tenure, curriculum, and class equity.",
     url: "https://web.physics.utah.edu/~usac/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["usac", "curriculum recommendations", "student voice"]
   },
   {
@@ -593,7 +583,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Advocate for student resources, access peer grants, and plan the annual high-stakes College of Science outreach festivals.",
     url: "https://science.utah.edu/student-council/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["student council", "governance", "peer funding", "events"]
   },
   {
@@ -602,7 +592,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Fulfill elite student leadership parameters. Guide school recruitments, representing the College of Science to community partners.",
     url: "https://science.utah.edu/students/science-ambassadors/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["science ambassadors", "public outreach", "leadership role"]
   },
   {
@@ -611,7 +601,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Get paired directly with high-achieving older peers to receive organic academic support, lifestyle advice, and lab interview training.",
     url: "https://science.utah.edu/science-mentors/",
     category: "Community & Student Orgs",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["mentors", "older peer help", "transition advice"]
   },
 
@@ -622,7 +612,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Understand exactly where your major can lead. Displays data on 40+ diverse STEM professions with median Bureau of Labor Statistics salary metrics and 10-year growth indicators.",
     url: "https://science.utah.edu/career-paths/",
     category: "Career Development",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["career salary", "growth statistics", "major outlook"]
   },
   {
@@ -631,17 +621,8 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Access completely free professional attire, shoes, and interview outfits. Look your best for upcoming career events & high-stakes employer fairs.",
     url: "https://careers.utah.edu/career-closet/",
     category: "Career Development",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["free suits", "closet fit", "interview wardrobe", "career prep"]
-  },
-  {
-    id: "professional-headshots",
-    name: "Professional LinkedIn Headshots",
-    description: "Schedule helper slots to get an elite high-definition LinkedIn profile headshot, photographed entirely for free.",
-    url: "https://desb-general-scheduling-link.as.me/schedule.php?calendarID=6152159",
-    category: "Career Development",
-    tier: 1,
-    relevanceTags: ["free photo", "headshot profile", "linkedin picture"]
   },
   {
     id: "science-internships-page",
@@ -649,7 +630,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Interactive handbook detailing early research internships, corporate partnerships, and how to query the Handshake job board.",
     url: "https://science.utah.edu/resources/internships/",
     category: "Career Development",
-    tier: 1,
+    tier: "all",
     relevanceTags: ["internships", "jobs board", "handshake tools"]
   },
   {
@@ -707,15 +688,6 @@ export const RESOURCES_DATA: Resource[] = [
     tier: "all",
     contact: "peercoachucs@utah.edu",
     relevanceTags: ["resume review", "peer coach", "application feedback"]
-  },
-  {
-    id: "ucs-video-interview-studio",
-    name: "U Career Success Video Interview Studio",
-    description: "Book a sound-controlled private room for virtual interviews, employer calls, and professional video meetings.",
-    url: "https://bit.ly/ucs-video-studios",
-    category: "Career Development",
-    tier: "all",
-    relevanceTags: ["video interview", "studio", "private room", "zoom interview"]
   },
   {
     id: "ucs-professional-headshots",
@@ -1043,7 +1015,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Paid summer placements at external institutions nationwide. Perfect mechanism to construct a national letter of recommendation network.",
     url: "https://www.nsf.gov/crssprgm/reu/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     deadline: "Feb-March",
     relevanceTags: ["nsf", "reu summer", "external research", "stipend travel"]
   },
@@ -1053,7 +1025,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Personalized essay coaching, campus draft screenings, and coordinator letters to safely apply for Fulbright, Churchill, Rhodes, and Goldwater.",
     url: "https://nationallycompetitivescholarships.utah.edu/scholarships/",
     category: "Scholarships & Financial Aid",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["competitive office", "essay advisor", "excellence", "recruiting help"]
   },
 
@@ -1064,7 +1036,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Schedule custom target sessions for final resume styling, CV review, LinkedIn outreach, technical mock interviews, and sector job alignment.",
     url: "https://science.utah.edu/students/careercoaching/",
     category: "Career Development",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["coaching", "resume help", "job offer alignment", "career advisor"]
   },
   {
@@ -1073,7 +1045,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Book pristine, high-definition soundproof video testing suites equipped with studio lighting, standard tripods, and high-quality webcams.",
     url: "https://desb-general-scheduling-link.as.me/schedule.php?calendarID=7138219",
     category: "Career Development",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["interview rooms", "silent booths", "zoom setup"]
   },
 
@@ -1084,7 +1056,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Represent original student laboratory progress to state legislators directly inside the Utah State Capitol Building in February.",
     url: "https://our.utah.edu/education-events/research-on-capitol-hill/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["utah capitol", "legislative presentations", "original poster"]
   },
   {
@@ -1093,7 +1065,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Present research posters to peer scientists inside a statewide intercollegiate scientific community with a 20+ year legacy.",
     url: "https://our.utah.edu/education-events/ucur/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["ucur", "statewide conference", "presentation skills"]
   },
   {
@@ -1102,7 +1074,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Accompany university delegations to present scientific research on a massive physical national stage. A gold-standard resume builder.",
     url: "https://www.cur.org/what/events/students/ncur/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["ncur", "national stage", "travel science stipend"]
   },
   {
@@ -1111,7 +1083,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Annual internal College of Science showcase presenting competitive cash prizes and student publication recognition panels.",
     url: "https://science.utah.edu/students/college-of-science-research-symposium-2026/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["internal showcase", "prizes", "department panels"]
   },
   {
@@ -1120,7 +1092,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "The dedicated, peer-reviewed undergraduate science journal. Complete publication to establish your absolute scientific credential for PhD applications.",
     url: "https://science.utah.edu/students/cos-range-2026/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["range", "scientific journal", "student author", "peer review"]
   },
   {
@@ -1129,7 +1101,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "Explores the Carnegie Tier-1 research profile of the university, highlighting $686M+ in annual funding and 280+ active scientific patents.",
     url: "https://science.utah.edu/research/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["university profiles", "carnegie tier-1", "patents", "overview"]
   },
   {
@@ -1183,7 +1155,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "$20 Million-funded core institute focused on environmental physics, climate projections, and massive annual student innovation cash prizes.",
     url: "https://science.utah.edu/the-wilkes-center/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["wilkes center", "climate physics", "prizes", "energy tech"]
   },
   {
@@ -1192,7 +1164,7 @@ export const RESOURCES_DATA: Resource[] = [
     description: "State-of-the-art Department of Energy geothermal test site located in Milford, UT, researching subterranean thermal energy reservoirs.",
     url: "https://science.utah.edu/news/utah-forge/",
     category: "Research & Internships",
-    tier: 2,
+    tier: "all",
     relevanceTags: ["forge geothermal", "clean energy", "milford test"]
   },
 

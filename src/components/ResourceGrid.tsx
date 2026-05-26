@@ -25,6 +25,7 @@ type CategoryDetail = {
   description: string;
   actionHref?: string;
   actionLabel?: string;
+  featuredResourceIds?: string[];
 };
 
 const CATEGORIES: CategoryOption[] = [
@@ -66,7 +67,8 @@ const CATEGORY_DETAILS: Record<CategoryValue, CategoryDetail> = {
   },
   "Advising & Course Planning": {
     title: "Advising & Course Planning",
-    description: "Advisor connections, registration help, placement guidance, degree planning, policies, and graduate planning."
+    description: "Advisor connections, registration help, placement guidance, degree planning, policies, and graduate planning.",
+    featuredResourceIds: ["academic-advising-hub", "schedule-advising-appointment", "drop-in-advising"]
   },
   "Scholarships & Financial Aid": {
     title: "Scholarships & Financial Aid",
@@ -86,7 +88,8 @@ const CATEGORY_DETAILS: Record<CategoryValue, CategoryDetail> = {
   },
   "Career Development": {
     title: "Career Development",
-    description: "Career coaching, resumes, interviews, headshots, job boards, internships, events, and career exploration."
+    description: "Career coaching, resumes, interviews, headshots, job boards, internships, events, and career exploration.",
+    featuredResourceIds: ["career-coaching-hub", "u-career-coaches"]
   },
   "Housing & Campus Life": {
     title: "Housing & Campus Life",
@@ -174,6 +177,21 @@ const isKnownCategory = (value: string): value is ResourceCategory =>
 const getDisplayCategoryStyle = (category: string) =>
   category === "all" ? ALL_CATEGORY_STYLE : getCategoryStyle(category);
 
+const getTierRank = (tier: Resource["tier"]) => {
+  if (tier === 1) return 0;
+  if (tier === "all") return 1;
+  return 2;
+};
+
+const getFeaturedResourceLabel = (resourceId: string) => {
+  if (resourceId === "academic-advising-hub") return "Find advisors";
+  if (resourceId === "schedule-advising-appointment") return "Book appointment";
+  if (resourceId === "drop-in-advising") return "Drop-in help";
+  if (resourceId === "career-coaching-hub") return "Schedule coaching";
+  if (resourceId === "u-career-coaches") return "Find career coaches";
+  return "Start here";
+};
+
 const getMiniCategory = (item: Resource) => {
   if (item.subcategory) return item.subcategory;
 
@@ -192,12 +210,18 @@ const getMiniCategory = (item: Resource) => {
       return "Science Academic Hubs";
 
     case "Advising & Course Planning":
-      if (has("graduate", "grad")) return "Graduate Planning";
-      if (has("petition", "withdrawal", "catalog", "graduation", "ap", "ib", "requirement")) {
+      if (["academic-advising-hub", "schedule-advising-appointment", "drop-in-advising"].includes(item.id)) {
+        return "Advising & Appointments";
+      }
+      if (["math-placement", "writing-placement", "major-maps", "how-to-register-video", "first-semester-planning"].includes(item.id)) {
+        return "Registration & Placement";
+      }
+      if (["graduation-worksheet", "ap-ib-prior-credit", "academic-catalogs", "gen-ed-petition", "late-withdrawal-petitions"].includes(item.id)) {
         return "Requirements & Policies";
       }
-      if (has("placement", "register", "registration", "first semester", "course planning")) {
-        return "Registration & Placement";
+      if (has("graduate", "postgraduate", "phd", "thesis")) return "Graduate Planning";
+      if (has("petition", "withdrawal", "catalog", "graduation", "ap", "ib", "requirement")) {
+        return "Requirements & Policies";
       }
       return "Advising & Appointments";
 
@@ -217,22 +241,33 @@ const getMiniCategory = (item: Resource) => {
       return "Scholarships";
 
     case "Research & Internships":
-      if (has("lab", "wilkes", "forge", "looper", "vershinin", "hammond", "shapiro", "gagnon")) {
-        return "Labs & Research Centers";
-      }
-      if (has("symposium", "conference", "journal", "poster", "publish", "present")) {
-        return "Present & Publish";
+      if (
+        item.id === "science-research-initiative" ||
+        item.id === "sri-cap" ||
+        item.id === "urop-undergrad-research" ||
+        item.id === "research-at-the-u-overview"
+      ) {
+        return "Getting Started in Research";
       }
       if (has("internship", "cap", "reu", "summer", "urop", "spur")) {
         return "Research Programs & Internships";
       }
+      if (has("symposium", "conference", "journal", "poster", "publish", "present")) {
+        return "Present & Publish";
+      }
+      if (has("lab", "wilkes", "forge", "looper", "vershinin", "hammond", "shapiro", "gagnon")) {
+        return "Labs & Research Centers";
+      }
       return "Getting Started in Research";
 
     case "Career Development":
-      if (has("coach", "coaching")) return "Career Coaching";
+      if (["career-coaching-hub", "u-career-coaches"].includes(item.id)) return "Career Coaching";
+      if (item.id === "u-career-success") return "Career Exploration";
+      if (item.id === "peer-resume-review") return "Resume, Interviews & Professional Presence";
       if (has("resume", "headshot", "interview", "closet", "linkedin", "studio")) {
         return "Resume, Interviews & Professional Presence";
       }
+      if (has("coach", "coaching")) return "Career Coaching";
       if (has("event", "fair", "handshake", "internship", "job")) {
         return "Jobs, Internships & Events";
       }
@@ -299,6 +334,14 @@ export function ResourceGrid({
     : "all") as CategoryValue;
   const selectedCategoryDetail = CATEGORY_DETAILS[selectedCategoryValue];
   const activeCategoryStyle = getDisplayCategoryStyle(selectedCategoryValue);
+  const selectedFeaturedResourceIds = selectedCategoryDetail.featuredResourceIds ?? [];
+  const selectedFeaturedResources = useMemo(() => {
+    if (isSearchActive || selectedFeaturedResourceIds.length === 0) return [];
+
+    return selectedFeaturedResourceIds
+      .map((resourceId) => resources.find((resource) => resource.id === resourceId))
+      .filter((resource): resource is Resource => Boolean(resource));
+  }, [isSearchActive, resources, selectedFeaturedResourceIds]);
 
   useEffect(() => {
     if (searchQuery && inputRef.current) {
@@ -318,6 +361,10 @@ export function ResourceGrid({
 
       if (!isSearchActive && selectedCategoryValue !== "all") {
         if (item.category !== selectedCategoryValue) {
+          return false;
+        }
+
+        if (selectedFeaturedResourceIds.includes(item.id)) {
           return false;
         }
       }
@@ -346,7 +393,7 @@ export function ResourceGrid({
 
       return true;
     });
-  }, [resources, isSearchActive, trimmedSearchQuery, selectedCategoryValue, selectedTier]);
+  }, [resources, isSearchActive, trimmedSearchQuery, selectedCategoryValue, selectedFeaturedResourceIds, selectedTier]);
 
   const groupedResources = useMemo(() => {
     const groups = new Map<string, Resource[]>();
@@ -354,6 +401,9 @@ export function ResourceGrid({
     filteredResources.forEach((item) => {
       const groupName = isSearchActive || selectedCategoryValue === "all" ? item.category : getMiniCategory(item);
       groups.set(groupName, [...(groups.get(groupName) ?? []), item]);
+    });
+    groups.forEach((groupItems) => {
+      groupItems.sort((itemA, itemB) => getTierRank(itemA.tier) - getTierRank(itemB.tier));
     });
 
     const orderedGroups =
@@ -391,11 +441,13 @@ export function ResourceGrid({
     setSelectedTier("all");
   };
 
-  const resultScopeLabel = isSearchActive
-    ? "matching search across all categories"
+  const resultsSummary = isSearchActive
+    ? `Showing ${filteredResources.length} resources matching search across all categories`
     : selectedCategoryValue === "all"
-      ? "in the directory"
-      : `in ${selectedCategoryDetail.title}`;
+      ? `Showing ${filteredResources.length} resources in the directory`
+      : selectedFeaturedResources.length > 0
+        ? `Showing ${filteredResources.length} additional resources in ${selectedCategoryDetail.title}`
+        : `Showing ${filteredResources.length} resources in ${selectedCategoryDetail.title}`;
 
   const renderResourceCard = (item: Resource) => {
     const categoryStyle = getCategoryStyle(item.category);
@@ -701,6 +753,42 @@ export function ResourceGrid({
               : selectedCategoryDetail.description}
           </p>
 
+          {selectedFeaturedResources.length > 0 && (
+            <div className="mt-6 flex flex-wrap justify-center gap-3 text-left" id="category-featured-resources">
+              {selectedFeaturedResources.map((resource) => (
+                <a
+                  key={resource.id}
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-full sm:w-[calc((100%-1.5rem)/3)] min-w-[14rem] max-w-[19rem] rounded-lg border bg-white px-4 py-3 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  style={{ borderColor: activeCategoryStyle.border }}
+                  id={`category-featured-${resource.id}`}
+                >
+                  <span
+                    className="inline-flex items-center rounded-md border px-2 py-1 text-[9px] font-bold uppercase tracking-normal"
+                    style={{
+                      backgroundColor: activeCategoryStyle.background,
+                      borderColor: activeCategoryStyle.border,
+                      color: activeCategoryStyle.text
+                    }}
+                  >
+                    {getFeaturedResourceLabel(resource.id)}
+                  </span>
+                  <span className="mt-2 flex items-start justify-between gap-3">
+                    <span className="text-sm font-bold leading-snug text-gray-950 group-hover:text-utah-red">
+                      {resource.name}
+                    </span>
+                    <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gray-400 group-hover:text-utah-red" />
+                  </span>
+                  <span className="mt-1.5 block text-xs leading-relaxed text-gray-550">
+                    {resource.description}
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {isSearchActive && selectedCategoryValue !== "all" && (
               <button
@@ -729,7 +817,7 @@ export function ResourceGrid({
 
       <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-1" id="results-count-container">
         <span className="text-xs font-sans font-medium text-gray-500">
-          Showing {filteredResources.length} resources {resultScopeLabel}
+          {resultsSummary}
         </span>
         {(searchQuery || selectedCategoryValue !== "all" || selectedTier !== "all") && (
           <span className="text-[11px] font-sans font-bold tracking-normal uppercase bg-utah-red-soft text-utah-red px-2.5 py-1 rounded-md self-start sm:self-auto">
