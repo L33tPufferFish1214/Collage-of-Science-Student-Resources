@@ -56,8 +56,6 @@ This is an independent student-created project. It is not an official University
 
 The website links to official University of Utah and College of Science resources whenever possible. Students should always check the official pages for the most current information, deadlines, and policies.
 
-Absolutely — you can replace the current **Getting Started** section with this more detailed version, or add it right after the **Tech Stack** section.
-
 ## How to Download, Run, and Edit the Project
 
 This project can be downloaded and edited locally for future development.
