@@ -6,66 +6,72 @@ export type CategoryStyle = {
 };
 
 const DEFAULT_CATEGORY_STYLE: CategoryStyle = {
-  accent: "#6F7479",
-  background: "#F1F2F2",
-  border: "#D9DCDE",
-  text: "#50565A"
+  accent: "#5E6870",
+  background: "#ECEFF1",
+  border: "#C9D0D5",
+  text: "#3F484F"
 };
 
 export const CATEGORY_STYLES: Record<string, CategoryStyle> = {
   "Academic Help": {
-    accent: "#9E6A6C",
-    background: "#F7EEEE",
-    border: "#EAD6D7",
-    text: "#684448"
+    accent: "#A5555A",
+    background: "#F6E5E6",
+    border: "#E5C4C7",
+    text: "#633338"
   },
   "Scholarships & Financial Aid": {
-    accent: "#8C8068",
-    background: "#F5F1E8",
-    border: "#E2DAC9",
-    text: "#625946"
+    accent: "#91815A",
+    background: "#F3EBD9",
+    border: "#DCCDAA",
+    text: "#5C4E2E"
   },
   "Research & Internships": {
-    accent: "#708E99",
-    background: "#EEF3F5",
-    border: "#D6E1E5",
-    text: "#4F6871"
+    accent: "#5F8A9B",
+    background: "#E7F0F3",
+    border: "#C5DCE4",
+    text: "#385D6B"
   },
   "Advising & Course Planning": {
-    accent: "#7A8188",
-    background: "#F1F3F4",
-    border: "#D8DDE0",
-    text: "#4F575E"
+    accent: "#697782",
+    background: "#ECEFF2",
+    border: "#CBD3D9",
+    text: "#3F4E58"
   },
   "Wellness & Mental Health": {
-    accent: "#7D8F83",
-    background: "#F0F4EF",
-    border: "#D7E1D8",
-    text: "#56685A"
+    accent: "#6F8F76",
+    background: "#EAF3E9",
+    border: "#C8DDCA",
+    text: "#415E47"
   },
   "Community & Student Orgs": {
-    accent: "#8B7F89",
-    background: "#F4F0F3",
-    border: "#DED6DD",
-    text: "#635A62"
+    accent: "#8B6F88",
+    background: "#F2E8F0",
+    border: "#D9C5D5",
+    text: "#5B4658"
   },
   "Career Development": {
-    accent: "#697985",
-    background: "#EEF2F4",
-    border: "#D5DEE3",
-    text: "#4A5861"
+    accent: "#5F788A",
+    background: "#E8F0F4",
+    border: "#C6D8E2",
+    text: "#3B5363"
   },
   "Housing & Campus Life": {
-    accent: "#82796E",
-    background: "#F2F0EC",
-    border: "#DBD5CE",
-    text: "#5F574E"
+    accent: "#85735F",
+    background: "#F1EBE3",
+    border: "#D8C7B4",
+    text: "#5B4B3A"
   },
   "Emergency & Safety": {
-    accent: "#8A6865",
-    background: "#F6EEEE",
-    border: "#E2D1CF",
-    text: "#654B48"
+    accent: "#985D59",
+    background: "#F5E5E3",
+    border: "#DFC0BD",
+    text: "#623A37"
+  },
+  "Student Access & Support": {
+    accent: "#5F8374",
+    background: "#E7F1ED",
+    border: "#C4DBD2",
+    text: "#38594C"
   },
   "Department Hubs": DEFAULT_CATEGORY_STYLE
 };

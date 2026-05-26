@@ -1,9 +1,23 @@
+export type ResourceCategory =
+  | "Academic Help"
+  | "Advising & Course Planning"
+  | "Scholarships & Financial Aid"
+  | "Research & Internships"
+  | "Wellness & Mental Health"
+  | "Community & Student Orgs"
+  | "Career Development"
+  | "Housing & Campus Life"
+  | "Emergency & Safety"
+  | "Student Access & Support"
+  | "Department Hubs";
+
 export interface Resource {
   id: string;
   name: string;
   description: string;
   url: string;
-  category: "Academic Help" | "Advising & Course Planning" | "Scholarships & Financial Aid" | "Research & Internships" | "Wellness & Mental Health" | "Community & Student Orgs" | "Career Development" | "Housing & Campus Life" | "Emergency & Safety" | "Department Hubs";
+  category: ResourceCategory;
+  subcategory?: string;
   tier: 1 | 2 | "all"; // 1 = Freshman/Sophomore, 2 = Junior/Senior/Graduate, "all" = Useful at all levels
   deadline?: string | null;
   contact?: string | null;
@@ -196,7 +210,7 @@ export const RESOURCES_DATA: Resource[] = [
     name: "Career Coach",
     description: "University-wide career support for coaching, resume help, job search tools, internships, and career planning.",
     url: "https://careers.utah.edu/",
-    category: "Advising & Course Planning",
+    category: "Career Development",
     tier: "all",
     contact: "801-587-8687",
     relevanceTags: ["Career Coach", "career coaching", "resume help", "career planning"]
@@ -844,7 +858,7 @@ export const RESOURCES_DATA: Resource[] = [
     name: "Environmental Health & Safety (EHS)",
     description: "The legal, comprehensive record of laboratory precautions, protective standards, and critical safety rules for research settings.",
     url: "https://www.ehs.utah.edu/resource-center/",
-    category: "Wellness & Mental Health",
+    category: "Emergency & Safety",
     tier: "all",
     relevanceTags: ["ehs", "hazard manual", "pre-research rules"]
   },
@@ -1038,7 +1052,7 @@ export const RESOURCES_DATA: Resource[] = [
     name: "Office of Nationally Competitive Scholarships",
     description: "Personalized essay coaching, campus draft screenings, and coordinator letters to safely apply for Fulbright, Churchill, Rhodes, and Goldwater.",
     url: "https://nationallycompetitivescholarships.utah.edu/scholarships/",
-    category: "Advising & Course Planning",
+    category: "Scholarships & Financial Aid",
     tier: 2,
     relevanceTags: ["competitive office", "essay advisor", "excellence", "recruiting help"]
   },
@@ -1247,6 +1261,90 @@ export const RESOURCES_DATA: Resource[] = [
     category: "Community & Student Orgs",
     tier: "all",
     relevanceTags: ["csme teach", "k-12 science outreach", "tutoring schools"]
+  },
+
+  // --- STUDENT ACCESS & SUPPORT (CSAR) ---
+  {
+    id: "csar-home",
+    name: "Center for Student Access & Resources (CSAR)",
+    description: "Central University of Utah support office for student success, well-being, scholarships, navigator help, and community connection.",
+    url: "https://studentresources.utah.edu/",
+    category: "Student Access & Support",
+    subcategory: "Start Here",
+    tier: "all",
+    contact: "Union 411 / 801-581-8030 / studentresources@utah.edu",
+    relevanceTags: ["csar", "student resources", "navigator", "student access", "support"]
+  },
+  {
+    id: "csar-scholarships",
+    name: "CSAR Scholarships",
+    description: "CSAR scholarship hub with eligibility notes, named awards, application timing, and ScholarshipUniverse application guidance.",
+    url: "https://studentresources.utah.edu/ourscholarships.php",
+    category: "Student Access & Support",
+    subcategory: "Scholarships & Cohorts",
+    tier: "all",
+    deadline: "Most CSAR applications open Dec 1 and close late Feb",
+    relevanceTags: ["csar scholarships", "scholarship universe", "financial support", "named awards"]
+  },
+  {
+    id: "csar-cohort-programs",
+    name: "CSAR Cohort Programs",
+    description: "Cohort scholarship programs with tuition support, one-on-one student resource navigator help, community building, and leadership development.",
+    url: "https://studentresources.utah.edu/cohortprograms.php",
+    category: "Student Access & Support",
+    subcategory: "Scholarships & Cohorts",
+    tier: "all",
+    relevanceTags: ["cohort programs", "single parent cohort", "miller enrichment", "operation success"]
+  },
+  {
+    id: "csar-campus-community-resources",
+    name: "CSAR Campus & Community Resources",
+    description: "Broad support directory for academic policies, basic needs, crisis lines, health care, mental health, identity centers, legal help, parenting, and involvement.",
+    url: "https://studentresources.utah.edu/resources.php",
+    category: "Student Access & Support",
+    subcategory: "Campus & Community Resources",
+    tier: "all",
+    relevanceTags: ["campus resources", "community resources", "basic needs", "crisis lines", "identity support"]
+  },
+  {
+    id: "csar-basic-needs",
+    name: "Basic Needs Through CSAR",
+    description: "Starting point for students looking for food, housing, financial wellness, health care, parenting, and emergency support resources.",
+    url: "https://studentresources.utah.edu/resources.php",
+    category: "Student Access & Support",
+    subcategory: "Basic Needs",
+    tier: "all",
+    relevanceTags: ["basic needs", "food", "housing", "financial wellness", "parenting", "emergency support"]
+  },
+  {
+    id: "csar-thinking-of-leaving",
+    name: "Thinking of Leaving the U?",
+    description: "CSAR support form for students considering leaving the University of Utah who want help finding ways to stay enrolled or navigate next steps.",
+    url: "https://studentresources.utah.edu/thinkingofleaving.php",
+    category: "Student Access & Support",
+    subcategory: "Student Navigation",
+    tier: "all",
+    relevanceTags: ["thinking of leaving", "stay in school", "withdrawal help", "student navigator", "retention"]
+  },
+  {
+    id: "csar-events",
+    name: "CSAR Upcoming Events",
+    description: "Events, workshops, and community opportunities from the Center for Student Access & Resources.",
+    url: "https://studentresources.utah.edu/events/",
+    category: "Student Access & Support",
+    subcategory: "Events & Outreach",
+    tier: "all",
+    relevanceTags: ["csar events", "workshops", "community", "student events"]
+  },
+  {
+    id: "csar-outreach",
+    name: "Request CSAR Tabling or Outreach",
+    description: "Request CSAR participation for tabling, outreach, and student support connection events.",
+    url: "https://utahsa.az1.qualtrics.com/jfe/form/SV_9EK5JknDwVQEOGi",
+    category: "Student Access & Support",
+    subcategory: "Events & Outreach",
+    tier: "all",
+    relevanceTags: ["tabling", "outreach", "presentation", "connect with csar"]
   },
 
   // --- DEPARTMENT HUBS ---

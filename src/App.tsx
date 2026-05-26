@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { SearchSection } from "./components/SearchSection";
 import { OverwhelmedRescue } from "./components/OverwhelmedRescue";
@@ -11,6 +11,7 @@ import {
   Award, 
   FlaskConical, 
   Heart, 
+  HeartHandshake,
   UserCheck, 
   Users, 
   ArrowRight, 
@@ -30,6 +31,10 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTier, setSelectedTier] = useState<1 | 2 | "all">("all");
   const [quickResourceIds, setQuickResourceIds] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeView]);
 
   const handleViewChange = (view: string) => {
     setQuickResourceIds(null);
@@ -93,8 +98,9 @@ export default function App() {
   const QUICK_CARDS: QuickCard[] = [
     { label: "Academic Support", icon: GraduationCap, category: "Academic Help" },
     { label: "Scholarships", icon: Award, category: "Scholarships & Financial Aid" },
+    { label: "Student Access", icon: HeartHandshake, category: "Student Access & Support" },
     { label: "Research Opportunities", icon: FlaskConical, category: "Research & Internships" },
-    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning", resourceIds: ["academic-advising-hub", "career-coach"] },
+    { label: "Advising & Planning", icon: UserCheck, category: "Advising & Course Planning" },
     { label: "Wellness & Counseling", icon: Heart, category: "Wellness & Mental Health" },
     { label: "Student Communities", icon: Users, category: "Community & Student Orgs" }
   ];
@@ -126,7 +132,7 @@ export default function App() {
             {/* Quick Access Grid Cards */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="quick-categories-section">
               
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="home-quick-grid">
+              <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-4" id="home-quick-grid">
                 {QUICK_CARDS.map((card) => {
                   const IconComponent = card.icon;
                   const categoryStyle = getCategoryStyle(card.category);

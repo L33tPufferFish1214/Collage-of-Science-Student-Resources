@@ -5,7 +5,7 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --color-utah-red: #be0000;
   --color-utah-red-dark: #8c0000;
-  --color-utah-red-soft: #f7e7e7;
+  --color-utah-red-soft: #f3dddd;
   --color-gray-150: #e8e8e8;
   --color-gray-550: #5f6367;
   --color-gray-650: #47494a;
@@ -16,6 +16,17 @@ body {
   font-family: var(--font-sans);
   background-color: #f7f7f5;
   color: #47494a;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 ::selection {
